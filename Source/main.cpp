@@ -46,9 +46,6 @@ main(int argc, char* argv[])
 
   // Make sure to catch new failures.
   amrex::Initialize(argc, argv);
-#ifdef AMREX_USE_GPU
-  amrex::sundials::Initialize();
-#endif
 
   // Save the inputs file name for later.
   if (!strchr(argv[1], '=')) {
@@ -209,9 +206,6 @@ main(int argc, char* argv[])
   BL_PROFILE_VAR_STOP(pmain);
   BL_PROFILE_SET_RUN_TIME(dRunTime2);
 
-#ifdef AMREX_USE_GPU
-  amrex::sundials::Finalize();
-#endif
   amrex::Finalize();
 
   return 0;
